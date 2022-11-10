@@ -92,8 +92,8 @@ def iterative_train_test_split(X, y, test_size):
     stratifier = IterativeStratification(n_splits=2, order=2, sample_distribution_per_fold=[test_size, 1.0-test_size])
     train_indexes, test_indexes = next(stratifier.split(X, y))
 
-    X_train, y_train = X[train_indexes, :], y[train_indexes, :]
-    X_test, y_test = X[test_indexes, :], y[test_indexes, :]
+    X_train, y_train = X.loc[train_indexes, :], y.loc[train_indexes, :]
+    X_test, y_test = X.loc[test_indexes, :], y.loc[test_indexes, :]
 
     return X_train, y_train, X_test, y_test
 
